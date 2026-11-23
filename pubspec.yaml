@@ -1,0 +1,50 @@
+name: focus_dm
+description: "Focus DM - Your Instagram DMs. No feed. No reels. Just messages."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State (auth notifier)
+  provider: ^6.1.2
+
+  # Navigation
+  go_router: ^14.6.2
+
+  # WebView — high-performance in-app browser
+  flutter_inappwebview: ^6.1.5
+
+  # Responsive sizing
+  sizer: 2.0.15
+
+  # Persist login state
+  shared_preferences: ^2.5.5
+
+  # Monetization (RevenueCat)
+  purchases_flutter: ^8.7.0
+  flutter_local_notifications: ^20.1.0
+  http: ^1.6.0
+  lottie: ^3.3.0
+  local_auth: ^3.0.1
+  crypto: ^3.0.7
+  device_preview: ^1.2.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/lottie/

@@ -1,0 +1,53 @@
+name: Focus DM — Instagram Web Canary Monitor
+
+on:
+  schedule:
+    # Run every 6 hours: 00:00, 06:00, 12:00, 18:00 UTC
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+    # Allow manual trigger from GitHub UI for instant checks
+
+jobs:
+  canary:
+    name: Instagram Web Health Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          cd canary
+          npm install
+
+      - name: Install Playwright browsers
+        run: |
+          cd canary
+          npx playwright install chromium --with-deps
+
+      - name: Run Instagram canary checks
+        id: canary_check
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          APP_VERSION: "1.0.0"
+        run: |
+          cd canary
+          node check.js
+        continue-on-error: true
+
+      - name: Upload canary report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canary-report-${{ github.run_id }}
+          path: canary/reports/
+          retention-days: 30

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Focus DM dark splash background #0C1014 -->
+    <item>
+        <color android:color="#0C1014"/>
+    </item>
+    <!-- Centered chat bubble icon -->
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/ic_launcher"
+            android:tileMode="disabled" />
+    </item>
+</layer-list>

@@ -1,0 +1,15 @@
+{
+  "name": "focus-dm-canary",
+  "version": "1.0.0",
+  "description": "Focus DM Instagram Web Canary Health Monitor",
+  "main": "check.js",
+  "scripts": {
+    "check": "node check.js",
+    "test": "node check.js"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.40.0",
+    "playwright": "^1.40.0",
+    "nodemailer": "^6.9.7"
+  }
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_service_description">Locks the official Instagram app during active Focus Mode sessions scheduled in Focus DM.</string>
+</resources>
